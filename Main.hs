@@ -1,9 +1,9 @@
 module Main where
 
 import Bot.Config
-import Bot.Methods (runMethod)
+import Bot.Methods
 
 main :: IO ()
 main = do
   cfg <- getConfig
-  runMethod cfg "getUpdates"
+  print =<< getUpdates cfg

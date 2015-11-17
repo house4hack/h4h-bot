@@ -1,0 +1,20 @@
+[
+  {
+    "message_id": 7,
+    "from": {
+      "id": 142342340,
+      "first_name": "Mikkel",
+      "last_name": "Christiansen",
+      "username": "mschristiansen"
+    },
+    "chat": {
+      "id": 112343,
+      "first_name": "Mikkel",
+      "last_name": "Christiansen",
+      "username": "mschristiansen",
+      "type": "private"
+    },
+    "date": 1447778174,
+    "text": "Hello"
+  }
+]

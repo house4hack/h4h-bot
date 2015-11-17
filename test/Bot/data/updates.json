@@ -1,0 +1,193 @@
+[
+  {
+    "update_id": 631948893,
+    "message": {
+      "message_id": 7,
+      "from": {
+        "id": 146422840,
+        "first_name": "Mikkel",
+        "last_name": "Christiansen",
+        "username": "mschristiansen"
+      },
+      "chat": {
+        "id": 146422840,
+        "first_name": "Mikkel",
+        "last_name": "Christiansen",
+        "username": "mschristiansen",
+        "type": "private"
+      },
+      "date": 1447778174,
+      "text": "Hello"
+    }
+  },
+  {
+    "update_id": 631948894,
+    "message": {
+      "message_id": 8,
+      "from": {
+        "id": 9882776,
+        "first_name": "Agent",
+        "last_name": "One",
+        "username": "Tobykurien"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447778276,
+      "new_chat_participant": {
+        "id": 84210004,
+        "first_name": "PollBot",
+        "username": "PollBot"
+      }
+    }
+  },
+  {
+    "update_id": 631948895,
+    "message": {
+      "message_id": 9,
+      "from": {
+        "id": 9882776,
+        "first_name": "Agent",
+        "last_name": "One",
+        "username": "Tobykurien"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447778425,
+      "text": "\/newpoll Should we run an Arudino beginner course?"
+    }
+  },
+  {
+    "update_id": 631948896,
+    "message": {
+      "message_id": 10,
+      "from": {
+        "id": 9882776,
+        "first_name": "Agent",
+        "last_name": "One",
+        "username": "Tobykurien"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447780287,
+      "new_chat_participant": {
+        "id": 165084953,
+        "first_name": "Gert",
+        "last_name": "van den Berg",
+        "username": "mohag1"
+      }
+    }
+  },
+  {
+    "update_id": 631948897,
+    "message": {
+      "message_id": 11,
+      "from": {
+        "id": 9882776,
+        "first_name": "Agent",
+        "last_name": "One",
+        "username": "Tobykurien"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447780451,
+      "new_chat_participant": {
+        "id": 143456971,
+        "first_name": "Org",
+        "last_name": "Jansen van Rensburg",
+        "username": "orgjvr"
+      }
+    }
+  },
+  {
+    "update_id": 631948898,
+    "message": {
+      "message_id": 12,
+      "from": {
+        "id": 144195044,
+        "first_name": "Arnold"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447780869,
+      "new_chat_participant": {
+        "id": 144195044,
+        "first_name": "Arnold"
+      }
+    }
+  },
+  {
+    "update_id": 631948899,
+    "message": {
+      "message_id": 13,
+      "from": {
+        "id": 167602465,
+        "first_name": "Werner",
+        "last_name": "Sauermann"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447782029,
+      "new_chat_participant": {
+        "id": 167602465,
+        "first_name": "Werner",
+        "last_name": "Sauermann"
+      }
+    }
+  },
+  {
+    "update_id": 631948900,
+    "message": {
+      "message_id": 14,
+      "from": {
+        "id": 167301689,
+        "first_name": "Quentin",
+        "last_name": "Harley",
+        "username": "qharley"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447782093,
+      "text": "\/newpoll"
+    }
+  },
+  {
+    "update_id": 631948901,
+    "message": {
+      "message_id": 15,
+      "from": {
+        "id": 9882776,
+        "first_name": "Agent",
+        "last_name": "One",
+        "username": "Tobykurien"
+      },
+      "chat": {
+        "id": -58330180,
+        "title": "House4Hack General Chat",
+        "type": "group"
+      },
+      "date": 1447782687,
+      "text": "\/newpoll Should we have a House4Hack year-end function?"
+    }
+  }
+]
