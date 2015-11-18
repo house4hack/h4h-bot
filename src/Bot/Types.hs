@@ -8,7 +8,11 @@ type ChatId = (String, Int)
 
 -- newtype Params = Params [(String,String)] deriving (Show)
 
-
+data Config = Config
+  { cfgToken  :: String
+  , cfgKey    :: String
+  , cfgSecret :: String
+  } deriving Show
 
 newtype BotResponse a =
   BotResponse { result :: a } deriving Show

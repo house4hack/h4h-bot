@@ -1,11 +1,14 @@
-module Bot.Config where
+{-# LANGUAGE OverloadedStrings #-}
+module Bot.Config
+ ( loadConfig
+ ) where
 
-import System.Environment
+import Bot.Types
+import Data.Configurator
 
-
-getConfig :: IO Config
-getConfig = Config <$> getEnv "H4H_BOT_TOKEN"
-
-data Config = Config
-  { cfgToken :: String
-  } deriving (Show)
+loadConfig :: IO Config
+loadConfig = do
+  f <- load [ Required "bot.cfg" ]
+  Config <$> require f "bot.token"
+         <*> require f "aws.access"
+         <*> require f "aws.secret"

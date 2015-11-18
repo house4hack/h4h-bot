@@ -8,7 +8,7 @@ import Control.Monad
 
 main :: IO ()
 main = do
-  cfg <- getConfig
+  cfg <- loadConfig
   echo cfg Nothing
 
 -- | echoes back what it receives.

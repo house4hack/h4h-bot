@@ -1,6 +1,5 @@
 module Bot.Methods where
 
-import Bot.Config
 import Bot.Types
 import Data.Aeson
 import Data.ByteString.Lazy (ByteString)
@@ -9,7 +8,7 @@ import Network.HTTP.Client
 import Network.HTTP.Client.TLS (tlsManagerSettings)
 
 endpoint :: Config -> String
-endpoint (Config token) = "https://api.telegram.org/bot" <> token <>"/"
+endpoint cfg = "https://api.telegram.org/bot" <> cfgToken cfg <>"/"
 
 getMe :: Config -> IO User
 getMe cfg = do
