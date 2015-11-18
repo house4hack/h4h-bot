@@ -4,25 +4,30 @@ module Bot.Types where
 import Data.Aeson
 import Control.Applicative
 
-data BotResponse = BotResponse
-  { botResult :: [Update]
-  , botOk     :: Bool
-  } deriving (Show)
+type ChatId = (String, Int)
 
-instance FromJSON BotResponse where
-  parseJSON (Object v) =
-    BotResponse <$> v .: "result"
-                <*> v .: "ok"
-  parseJSON _ = empty
+-- newtype Params = Params [(String,String)] deriving (Show)
+
+
+
+newtype BotResponse a =
+  BotResponse { result :: a } deriving Show
+
+instance FromJSON a => FromJSON (BotResponse a) where
+  parseJSON (Object v) = BotResponse <$> v .: "result"
+  parseJSON _          = empty
+
+
+newtype UpdateId = UpdateId Int deriving (Show)
 
 data Update = Update
-  { updateId      :: Int
+  { updateId      :: UpdateId
   , updateMessage :: Message
   } deriving (Show)
 
 instance FromJSON Update where
   parseJSON (Object v) =
-    Update <$> v .: "update_id"
+    Update <$> (UpdateId <$> v .: "update_id")
            <*> v .: "message"
   parseJSON _ = empty
 
@@ -87,3 +92,23 @@ instance FromJSON Chat where
          <*> v .:? "first_name"
          <*> v .:? "last_name"
   parseJSON _ = empty
+
+
+
+data OnlyTrue = True deriving (Show)
+
+data ReplyMarkup
+  = ReplyKeyboardMarkup
+      { rmKeyboard        :: [[String]]
+      , rmResizeKeyboad   :: Maybe Bool
+      , rmOneTimeKeyboard :: Maybe Bool
+      , rmSelective       :: Maybe Bool
+      }
+  | ReplyKeyboardHide
+      { rmHideKeyboard :: OnlyTrue
+      , rmSelective    :: Maybe Bool
+      }
+  | ForceReply
+      { rmForceReply :: OnlyTrue
+      , rmSelective  :: Maybe Bool
+      } deriving (Show)

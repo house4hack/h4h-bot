@@ -16,5 +16,23 @@
     },
     "date": 1447778174,
     "text": "Hello"
+  },
+  {
+    "text": "hello again",
+    "date": 1447852395,
+    "chat": {
+      "type": "private",
+      "username": "mschristiansen",
+      "last_name": "Christiansen",
+      "first_name": "Mikkel",
+      "id": 146422840
+    },
+    "from": {
+      "username": "h4hBot",
+      "first_name": "House4Hack Bot",
+      "id": 135645053
+    },
+    "message_id": 34
   }
 ]
+

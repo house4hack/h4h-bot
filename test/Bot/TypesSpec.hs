@@ -19,4 +19,4 @@ spec = do
       length <$> (decode users :: (Maybe [User])) `shouldBe` Just 1
     it "decodes messages" $ do
       messages <- LBS.readFile "test/Bot/data/messages.json"
-      length <$> (decode messages :: (Maybe [Message])) `shouldBe` Just 1
+      length <$> (decode messages :: (Maybe [Message])) `shouldBe` Just 2
