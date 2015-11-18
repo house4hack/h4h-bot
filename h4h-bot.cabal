@@ -25,6 +25,7 @@ library
   exposed-modules:     Bot.Config
                      , Bot.Methods
                      , Bot.Types
+                     , Bot.Commands
   ghc-options:         -Wall
 
 
