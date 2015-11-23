@@ -6,12 +6,11 @@ import Control.Applicative
 
 type ChatId = (String, Int)
 
--- newtype Params = Params [(String,String)] deriving (Show)
-
 data Config = Config
   { cfgToken  :: String
-  , cfgKey    :: String
-  , cfgSecret :: String
+  , cfgAccess :: Int
+  , cfgDoor   :: String
+  , cfgGate   :: String
   } deriving Show
 
 newtype BotResponse a =
@@ -76,7 +75,6 @@ instance FromJSON User where
          <*> v .:? "last_name"
          <*> v .:? "username"
   parseJSON _ = empty
-
 
 data Chat = Chat
   { chatId        :: Int

@@ -10,5 +10,6 @@ loadConfig :: IO Config
 loadConfig = do
   f <- load [ Required "bot.cfg" ]
   Config <$> require f "bot.token"
-         <*> require f "aws.access"
-         <*> require f "aws.secret"
+         <*> require f "access.group"
+         <*> require f "access.door"
+         <*> require f "access.gate"
