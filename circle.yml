@@ -1,0 +1,10 @@
+machine:
+  ghc:
+    version: 7.10.1
+
+dependencies:
+  override:
+    - cabal update
+    - cabal install --dependencies-only --enable-tests
+  post:
+    - cabal configure && cabal build
