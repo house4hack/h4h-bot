@@ -10,7 +10,7 @@ helpText = "I can grant access to h4h with\
            \ the command `/door` or `/gate`"
 
 isAuthenticated :: Config -> Chat -> Bool
-isAuthenticated cfg chat = chatId chat == cfgAccess cfg
+isAuthenticated cfg chat = chatId chat == cfgGroup cfg
 
 handleUpdate :: Config -> Manager -> Update -> IO ()
 handleUpdate cfg http (Update _ (Message _ _ _ chat mtext)) =

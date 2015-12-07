@@ -8,7 +8,7 @@ type ChatId = (String, Int)
 
 data Config = Config
   { cfgToken  :: String
-  , cfgAccess :: Int
+  , cfgGroup :: Int
   , cfgDoor   :: String
   , cfgGate   :: String
   } deriving Show
