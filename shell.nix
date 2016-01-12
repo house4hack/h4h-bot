@@ -4,8 +4,8 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, aeson, base, bytestring, configurator, hspec
-      , http-client, http-client-tls, QuickCheck, stdenv, text
+  f = { mkDerivation, base, bytestring, configurator, hspec
+      , http-client, http-client-tls, json, QuickCheck, stdenv, text
       }:
       mkDerivation {
         pname = "h4h-bot";
@@ -14,10 +14,10 @@ let
         isLibrary = true;
         isExecutable = true;
         libraryHaskellDepends = [
-          aeson base bytestring configurator http-client http-client-tls text
+          base bytestring configurator http-client http-client-tls json text
         ];
         executableHaskellDepends = [ base ];
-        testHaskellDepends = [ aeson base bytestring hspec QuickCheck ];
+        testHaskellDepends = [ base bytestring hspec QuickCheck ];
         description = "Telegram bot for @house4hack";
         license = stdenv.lib.licenses.gpl3;
       };

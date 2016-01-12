@@ -6,11 +6,11 @@ module Bot.Methods
   ) where
 
 import Bot.Types
-import Data.Aeson
-import Data.ByteString.Lazy (ByteString)
+import Data.ByteString.Lazy.Char8 (unpack)
 import Data.Monoid ((<>))
 import Network.HTTP.Client
 import Network.HTTP.Client.TLS (tlsManagerSettings)
+import Text.JSON
 
 endpoint :: Config -> String
 endpoint cfg = "https://api.telegram.org/bot" <> cfgToken cfg <>"/"
@@ -21,33 +21,33 @@ timeoutSeconds = 60
 getMe :: Config -> Manager -> IO User
 getMe cfg http = do
   body <- getUrl cfg http "getMe"
-  case result <$> decode body of
-   Just user -> return user
-   Nothing      -> error "getMe: failed to parse response"
+  handleBody "getMe" body
 
 getUpdates :: Config -> Manager -> Maybe UpdateId -> IO [Update]
 getUpdates cfg http moffset = do
   body <- getUrl cfg http $ case moffset of
                               Nothing -> "getUpdates?timeout=" <> show timeoutSeconds
                               Just (UpdateId i) -> "getUpdates?timeout=" <> show timeoutSeconds <>"&offset="<> show i
-  case result <$> decode body of
-   Just updates -> return updates
-   Nothing      -> error "getUpdates: failed to parse response"
+  handleBody "getUpdates" body
 
 sendMessage :: Config -> Manager -> Int -> String -> IO Message
 sendMessage cfg http cid te = do
   body <- getUrl cfg http $ "sendMessage?chat_id=" <> show cid <> "&text=" <> te
-  case result <$> decode body of
-   Just messages -> return messages
-   Nothing       -> error "sendMessage: failed to parse response"
+  handleBody "sendMessage" body
 
-getUrl :: Config -> Manager -> String -> IO ByteString
+handleBody :: JSON a => String -> String -> IO a
+handleBody fname body =
+  case result <$> decode body of
+   Ok payload -> return payload
+   Error s    -> error $ fname <> ": " <> s
+
+getUrl :: Config -> Manager -> String -> IO String
 getUrl cfg http meth = do
   let url = endpoint cfg <> meth
   putStrLn url
   request <- parseUrl url
   response <- httpLbs request http
-  return $ responseBody response
+  return $ unpack $ responseBody response
 
 tlsManager :: IO Manager
 tlsManager = newManager $ tlsManagerSettings { managerResponseTimeout = timeout }
