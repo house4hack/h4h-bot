@@ -1,0 +1,8 @@
+[Unit]
+Description=House4Hack Telegram Bot
+
+[Service]
+ExecStart=/usr/local/bin/h4h-bot
+
+[Install]
+WantedBy=multi-user.target
