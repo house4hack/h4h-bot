@@ -1,5 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE GADTs #-}
+{-# LANGUAGE OverloadedStrings, CPP #-}
 module Bot.Methods
   ( module Bot.Methods
   , Manager
@@ -11,6 +10,9 @@ import Data.Monoid ((<>))
 import Network.HTTP.Client
 import Network.HTTP.Client.TLS (tlsManagerSettings)
 import Text.JSON
+#if __GLASGOW_HASKELL__ < 710
+import Control.Applicative ((<$>))
+#endif
 
 endpoint :: Config -> String
 endpoint cfg = "https://api.telegram.org/bot" <> cfgToken cfg <>"/"

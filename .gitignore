@@ -1,2 +1,5 @@
 dist/
 /bot.cfg
+.cabal/
+.cabal-sandbox/
+.ghc/
