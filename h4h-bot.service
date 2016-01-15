@@ -3,6 +3,7 @@ Description=House4Hack Telegram Bot
 
 [Service]
 ExecStart=/usr/local/bin/h4h-bot
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
