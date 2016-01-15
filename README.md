@@ -1,20 +1,10 @@
 # H4H Bot
 
-Can now 
+This Telegram Bot is used for access control at House4Hack.
 
-# Run
+# Build
 
-The Telegram bot token must be available in the environment.
-(See example below.)
-
-```
-export H4H_BOT_TOKEN=23456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
-
-```
-
-# Build Instructions.
-
-Can be compiled with GHC. Currently tested with GHC v7.10.2.
+Can be compiled with GHC. Currently tested with GHC v7.10.3 and v7.6.3.
 
 ```
 $ apt-get install ghc cabal-install
@@ -24,5 +14,32 @@ $ cabal sandbox init
 $ cabal install --dependencies-only
 $ cabal configure
 $ cabal build
-$ ./dist/build/h4h-bot/h4h-bot
+```
+
+# Install
+
+Copy the binary, config and systemd files. Systemd can of cause be
+left out and the binary executed directly.
+
+```
+$ cp dist/h4h-bot/h4h-bot /usr/local/bin
+$ cp default.cfg /etc/h4h-bot.cfg
+$ cp h4h-bot.service /etc/systemd/system/
+$ systemctl start h4h-bot
+$ systemctl enable h4h-bot
+```
+
+# Config
+
+```
+$ cat /etc/h4h-bot.cfg
+bot {
+  token  = "23456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+}
+
+access {
+  group = -12345678 # Id of the telegram group to give access.
+  door  = "http://192.168.1.1/door"
+  gate  = "http://192.168.1.1/gate"
+}
 ```
