@@ -16,3 +16,4 @@ loadConfig = do
          <*> require f "access.group"
          <*> require f "access.door"
          <*> require f "access.gate"
+         <*> require f "message.timeout"

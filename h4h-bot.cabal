@@ -22,6 +22,7 @@ library
                      , http-client-tls
                      , json
                      , text
+                     , time
   exposed-modules:     Bot.Config
                      , Bot.Methods
                      , Bot.Types

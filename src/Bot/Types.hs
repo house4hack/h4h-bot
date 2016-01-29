@@ -7,10 +7,11 @@ import Control.Applicative
 type ChatId = (String, Int)
 
 data Config = Config
-  { cfgToken  :: String
-  , cfgGroup :: Int
-  , cfgDoor   :: String
-  , cfgGate   :: String
+  { cfgToken   :: String
+  , cfgGroup   :: Int
+  , cfgDoor    :: String
+  , cfgGate    :: String
+  , cfgTimeout :: Int -- Seconds
   } deriving Show
 
 newtype BotResponse a =
@@ -38,7 +39,7 @@ instance JSON Update where
 data Message = Message
   { messageId   :: Int
   , messageFrom :: Maybe User
-  , messageDate :: Int
+  , messageDate :: Int -- PosixTime
   , messageChat :: Chat
   , messageText :: Maybe String
 
@@ -100,20 +101,20 @@ maybeFromObj k o = maybe (Ok Nothing)
   (\js -> Just <$> readJSON js) (lookup k (fromJSObject o))
 
 
-data OnlyTrue = True deriving (Show)
+-- data OnlyTrue 
 
-data ReplyMarkup
-  = ReplyKeyboardMarkup
-      { rmKeyboard        :: [[String]]
-      , rmResizeKeyboad   :: Maybe Bool
-      , rmOneTimeKeyboard :: Maybe Bool
-      , rmSelective       :: Maybe Bool
-      }
-  | ReplyKeyboardHide
-      { rmHideKeyboard :: OnlyTrue
-      , rmSelective    :: Maybe Bool
-      }
-  | ForceReply
-      { rmForceReply :: OnlyTrue
-      , rmSelective  :: Maybe Bool
-      } deriving (Show)
+-- data ReplyMarkup
+--   = ReplyKeyboardMarkup
+--       { rmKeyboard        :: [[String]]
+--       , rmResizeKeyboad   :: Maybe Bool
+--       , rmOneTimeKeyboard :: Maybe Bool
+--       , rmSelective       :: Maybe Bool
+--       }
+--   | ReplyKeyboardHide
+--       { rmHideKeyboard :: OnlyTrue
+--       , rmSelective    :: Maybe Bool
+--       }
+--   | ForceReply
+--       { rmForceReply :: OnlyTrue
+--       , rmSelective  :: Maybe Bool
+--       } deriving (Show)
