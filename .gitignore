@@ -3,3 +3,6 @@ dist/
 .cabal/
 .cabal-sandbox/
 .ghc/
+.stack-work/
+/h4h-bot.cfg
+cabal.sandbox.config
