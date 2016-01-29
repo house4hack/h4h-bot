@@ -28,6 +28,7 @@ library
                      , Bot.Types
                      , Bot.Commands
   ghc-options:         -Wall
+  extensions:          CPP
 
 
 executable h4h-bot

@@ -5,12 +5,14 @@ import Bot.Methods
 import Control.Monad
 import Network.HTTP.Client
 import Data.Time.Clock.POSIX
+#if __GLASGOW_HASKELL__ < 710
+import Control.Applicative ((<$>))
+#endif
 
 type Posix = Int
 
 helpText :: String
-helpText = "I can grant access to h4h with\
-           \ the command `/door` or `/gate`"
+helpText = "I can grant access to h4h with the command `/door` or `/gate`"
 
 isAuthenticated :: Config -> Chat -> Bool
 isAuthenticated cfg chat = chatId chat == cfgGroup cfg
