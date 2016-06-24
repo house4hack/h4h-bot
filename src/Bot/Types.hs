@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, GeneralizedNewtypeDeriving #-}
 module Bot.Types where
 
 import Text.JSON
@@ -22,7 +22,7 @@ instance JSON a => JSON (BotResponse a) where
   readJSON _            = empty
 
 
-newtype UpdateId = UpdateId Int deriving (Show)
+newtype UpdateId = UpdateId Int deriving (Show, Num)
 
 data Update = Update
   { updateId      :: UpdateId
@@ -42,14 +42,6 @@ data Message = Message
   , messageDate :: Int -- PosixTime
   , messageChat :: Chat
   , messageText :: Maybe String
-
-  -- These are some of the optional parameters.
-  --
-  -- , messageForwardFrom :: User
-  -- , messageForwardDate :: Int
-  -- , messageReplyToMessage :: Message
-  -- , messageAudio :: Audio
-  -- , messageDocument :: Document
   } deriving (Show)
 
 instance JSON Message where
@@ -99,22 +91,3 @@ instance JSON Chat where
 maybeFromObj :: JSON a => String -> JSObject JSValue -> Result (Maybe a)
 maybeFromObj k o = maybe (Ok Nothing)
   (\js -> Just <$> readJSON js) (lookup k (fromJSObject o))
-
-
--- data OnlyTrue 
-
--- data ReplyMarkup
---   = ReplyKeyboardMarkup
---       { rmKeyboard        :: [[String]]
---       , rmResizeKeyboad   :: Maybe Bool
---       , rmOneTimeKeyboard :: Maybe Bool
---       , rmSelective       :: Maybe Bool
---       }
---   | ReplyKeyboardHide
---       { rmHideKeyboard :: OnlyTrue
---       , rmSelective    :: Maybe Bool
---       }
---   | ForceReply
---       { rmForceReply :: OnlyTrue
---       , rmSelective  :: Maybe Bool
---       } deriving (Show)
