@@ -1,7 +1,7 @@
 name:                h4h-bot
 version:             0.1.0.0
 synopsis:            Telegram bot for @house4hack
--- description:
+description:         Telegram bot that controls access to house4hack.
 license:             GPL-3
 license-file:        LICENSE
 author:              Mikkel Christiansen
@@ -32,7 +32,7 @@ library
   default-extensions:  CPP
 
 
-executable h4h-bot
+executable h4h-bot-exe
   main-is:             Main.hs
   build-depends:       base
                      , h4h-bot
