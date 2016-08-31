@@ -51,5 +51,7 @@ getUrl cfg http meth = do
   response <- httpLbs request http
   return $ unpack $ responseBody response
 
+-- Connection timeout should be greater than timeout in query param.
 tlsManager :: IO Manager
-tlsManager = newManager tlsManagerSettings
+tlsManager = newManager $ tlsManagerSettings { managerResponseTimeout = t }
+  where t = responseTimeoutMicro (timeoutSeconds * 1000000)

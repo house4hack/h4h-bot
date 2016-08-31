@@ -6,11 +6,12 @@ import Bot.Methods        (Manager, tlsManager, getUpdates)
 import Bot.Types          (Config, UpdateId, updateId)
 import Control.Exception  (SomeException, catch)
 import Control.Concurrent (threadDelay)
+import Control.Monad      (forever)
 
 -- | Load config and process updates. Get a new http manager and try
 -- again if an exception breaks the processUpdates loop.
 start :: IO ()
-start = do
+start = forever $ do
   cfg <- loadConfig
   http <- tlsManager
   catch (processUpdates cfg http Nothing) logException
