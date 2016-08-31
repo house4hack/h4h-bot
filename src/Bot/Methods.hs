@@ -52,5 +52,4 @@ getUrl cfg http meth = do
   return $ unpack $ responseBody response
 
 tlsManager :: IO Manager
-tlsManager = newManager $ tlsManagerSettings { managerResponseTimeout = timeout }
-  where timeout = Just $ timeoutSeconds * 1000000
+tlsManager = newManager tlsManagerSettings
