@@ -23,7 +23,8 @@ library
                      , json
                      , text
                      , time
-  exposed-modules:     Bot.Config
+  exposed-modules:     Bot
+                     , Bot.Config
                      , Bot.Methods
                      , Bot.Types
                      , Bot.Commands

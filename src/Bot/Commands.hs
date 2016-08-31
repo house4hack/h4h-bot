@@ -50,4 +50,4 @@ handleUpdate cfg http (Update _ (Message _ _ t chat mtext)) = do
       _                 -> respond "nothing text"
 
 access :: Manager -> String -> IO ()
-access http url = void $ flip httpLbs http =<< parseUrl url
+access http url = void $ flip httpLbs http =<< parseUrlThrow url

@@ -47,7 +47,7 @@ getUrl :: Config -> Manager -> String -> IO String
 getUrl cfg http meth = do
   let url = endpoint cfg <> meth
   putStrLn url
-  request <- parseUrl url
+  request <- parseUrlThrow url
   response <- httpLbs request http
   return $ unpack $ responseBody response
 
