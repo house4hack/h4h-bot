@@ -29,25 +29,24 @@ handleUpdate cfg http (Update _ (Message _ _ t chat mtext)) = do
   timely <- isTimely cfg t
   when timely $ do
     let respond msg  = void $ sendMessage cfg http (chatId chat) msg
-
-    case mtext of
-      Just "/start"     -> respond "start text"
-      Just "/help"      -> respond helpText
-      Just "/settings"  -> respond "settings text"
-      Just "/door" ->
-        if isAuthenticated cfg chat then
+        tryDoor = if isAuthenticated cfg chat then
           do respond "Attempting to open door..."
              access http $ cfgDoor cfg
           else respond "Sorry, only works from the House4Hack Access group."
-
-      Just "/gate" ->
-        if isAuthenticated cfg chat then
+        tryGate = if isAuthenticated cfg chat then
           do respond "Attempting to open gate..."
              access http $ cfgGate cfg
           else respond "Sorry, only works from the House4Hack Access group."
 
-      Just echo         -> respond echo
-      _                 -> respond "nothing text"
+    case mtext of
+      Just "/start"       -> respond helpText
+      Just "/help"        -> respond helpText
+      Just "/settings"    -> respond "settings text"
+      Just "/door"        -> tryDoor
+      Just "/door@h4hBot" -> tryDoor
+      Just "/gate"        -> tryGate
+      Just "/gate@h4hBot" -> tryGate
+      _                   -> respond "I'm the h4h access bot"
 
 access :: Manager -> String -> IO ()
 access http url = void $ flip httpLbs http =<< parseUrlThrow url
