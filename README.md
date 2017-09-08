@@ -43,3 +43,12 @@ access {
   gate  = "http://192.168.1.1/gate"
 }
 ```
+
+# Compilation on Raspberry Pi 1
+
+Had to increase the swapfile size by editing `/etc/dphys-swapfile`.
+
+```
+root@DietPi:/etc# cat dphys-swapfile
+CONF_SWAPSIZE=2048
+```
