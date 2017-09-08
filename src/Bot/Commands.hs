@@ -4,6 +4,7 @@ import Bot.Types
 import Bot.Methods
 import Control.Monad
 import Network.HTTP.Client
+import System.Process (readProcess)
 import Data.Time.Clock.POSIX
 #if __GLASGOW_HASKELL__ < 710
 import Control.Applicative ((<$>))
@@ -37,7 +38,9 @@ handleUpdate cfg http (Update _ (Message _ _ t chat mtext)) = do
           do respond "Attempting to open gate..."
              access http $ cfgGate cfg
           else respond "Sorry, only works from the House4Hack Access group."
-
+        hostname = do
+          s <- readProcess "hostname" ["-I"] []
+          respond $ "IP addresses: " ++ take (length s - 2) s
     case mtext of
       Just "/start"       -> respond helpText
       Just "/help"        -> respond helpText
@@ -46,6 +49,7 @@ handleUpdate cfg http (Update _ (Message _ _ t chat mtext)) = do
       Just "/door@h4hBot" -> tryDoor
       Just "/gate"        -> tryGate
       Just "/gate@h4hBot" -> tryGate
+      Just "/hostname"    -> hostname
       _                   -> respond "I'm the h4h access bot"
 
 access :: Manager -> String -> IO ()

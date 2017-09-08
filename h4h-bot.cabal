@@ -21,6 +21,7 @@ library
                      , http-client
                      , http-client-tls
                      , json
+                     , process
                      , text
                      , time
   exposed-modules:     Bot
